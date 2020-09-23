@@ -3,13 +3,14 @@ const toyCollection = document.getElementById('toy-collection');
 const createToyForm = document.querySelector(".add-toy-form");
 
 let toys; 
-const URL = "http://localhost:3000/toys";
+// const URL = "http://localhost:3000/toys";
 
 function fetchToys() {
   return fetch("http://localhost:3000/toys")
   .then(function(response) {
   return response.json();
-  }).then(function(toys) {
+  }).then(function(json) {
+    toys = json
     renderToys(toys);
   })
 };
@@ -27,30 +28,30 @@ function renderToys(toys){
     let buttonTag = document.createElement('button');
     buttonTag.className = "like-btn";
     buttonTag.innerHTML = "Like <3";
-    buttonTag.addEventListener('click', (e) => {
-      e.preventDefault();
-      fetch(`${URL}/${toy.id}`, {
-        method: 'PATCH',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(
-          {"likes": toy.likes += 1}
-        )
-      })
-      .then(response => response.json())
-      .then(json => {
-        likesP.innerHTML = `likes: ${toy.likes}`;
-    });
     nameHeader.innerHTML = toy.name;
     imageTag.src = toy.image;
     likesP.innerHTML = `likes: ${toy.likes}`;
     let divs = [nameHeader, imageTag, likesP, buttonTag]; 
     divs.forEach(div => divCard.appendChild(div));
     toyCollection.appendChild(divCard);
+  //   buttonTag.addEventListener('click', (e) => {
+  //     e.preventDefault();
+  //     fetch(`${URL}/${toy.id}`, {
+  //       method: 'PATCH',
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(
+  //         {"likes": toy.likes += 1}
+  //       )
+  //     })
+  //     .then(response => response.json())
+  //     .then(json => {
+  //       likesP.innerHTML = `likes: ${toy.likes}`;
+  //   });
   });
-  renderToys(toys);
-});
+};
+
 
 
 
