@@ -3,7 +3,7 @@ const toyCollection = document.getElementById('toy-collection');
 const createToyForm = document.querySelector(".add-toy-form");
 
 let toys; 
-// const URL = "http://localhost:3000/toys";
+const URL = "http://localhost:3000/toys";
 
 function fetchToys() {
   return fetch("http://localhost:3000/toys")
@@ -34,21 +34,23 @@ function renderToys(toys){
     let divs = [nameHeader, imageTag, likesP, buttonTag]; 
     divs.forEach(div => divCard.appendChild(div));
     toyCollection.appendChild(divCard);
-  //   buttonTag.addEventListener('click', (e) => {
-  //     e.preventDefault();
-  //     fetch(`${URL}/${toy.id}`, {
-  //       method: 'PATCH',
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(
-  //         {"likes": toy.likes += 1}
-  //       )
-  //     })
-  //     .then(response => response.json())
-  //     .then(json => {
-  //       likesP.innerHTML = `likes: ${toy.likes}`;
-  //   });
+  
+      buttonTag.addEventListener('click', (e) => {
+        e.preventDefault();
+        toy.likes = toy.likes += 1;
+        fetch(`${URL}/${toy.id}`, {
+          method: 'PATCH',
+          headers: {
+            "Content-Type": "application/json",
+            },
+          body: JSON.stringify(toy)
+        })
+        .then(response => response.json())
+        .then(json => {
+            likesP.innerHTML = `likes: ${json.likes}`;
+        });
+      });
+
   });
 };
 
