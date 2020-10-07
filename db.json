@@ -4,13 +4,13 @@
       "id": 1,
       "name": "Woody",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-      "likes": 5
+      "likes": 23
     },
     {
       "id": 2,
       "name": "Buzz Lightyear",
       "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-      "likes": 8
+      "likes": 17
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "id": 4,
       "name": "Slinky Dog",
       "image": "https://www.freeiconspng.com/uploads/slinky-png-transparent-1.png",
-      "likes": 4
+      "likes": 10
     },
     {
       "id": 5,
@@ -47,6 +47,48 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "Pikachu",
+      "image": "https://cdn11.bigcommerce.com/s-yaorr/images/stencil/1280x1280/products/5534/28395/5eed1edd5816b04b6c45a4f116c8cfba_4904810884156__91905.1564807989.jpg",
+      "likes": 5,
+      "id": 9
+    },
+    {
+      "name": "Mario",
+      "image": "https://media.entertainmentearth.com/assets/images/fabc3785079d460d8c5f1a44e5b99d37xl.jpg",
+      "likes": 3,
+      "id": 10
+    },
+    {
+      "name": "Vegeta",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/61PWi7kT29L._AC_SL1500_.jpg",
+      "likes": 2,
+      "id": 11
+    },
+    {
+      "name": "MineCraft Steve",
+      "image": "https://i5.walmartimages.com/asr/a3a35f3f-97ba-4f04-906a-504421aa0044_1.8d3c586cc387992032f73d9c1581bf40.jpeg",
+      "likes": 20,
+      "id": 12
+    },
+    {
+      "name": "Nes",
+      "image": "https://upload.wikimedia.org/wikipedia/en/5/58/Ness_%28EarthBound%29.png",
+      "likes": 5,
+      "id": 13
+    },
+    {
+      "name": "Link",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/6144bUoESXL._AC_SL1274_.jpg",
+      "likes": 2,
+      "id": 14
+    },
+    {
+      "name": "Peter (Family Guy)",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/71w0UxvZsRL._AC_SL1500_.jpg",
+      "likes": 5,
+      "id": 15
     }
   ]
 }
