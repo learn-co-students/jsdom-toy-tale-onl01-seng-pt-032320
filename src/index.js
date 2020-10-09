@@ -1,17 +1,17 @@
 let addToy = false;
+const toyFormContainer = document.querySelector(".container");
+const addBtn = document.querySelector("#new-toy-btn");
+const toyForm = document.querySelector(".add-toy-form");
 
 document.addEventListener("DOMContentLoaded", () => {
-  const addBtn = document.querySelector("#new-toy-btn");
-  const toyFormContainer = document.querySelector(".container");
-  const toyForm = document.querySelector(".add-toy-form");
   fetchTheToys();
-
   toyForm.addEventListener('submit', (event) => {
    let toyName = document.querySelector('input[name="name"]').value;
    let toyURL = document.querySelector('input[name="image"]').value;
    submitToy(toyName, toyURL);
    event.preventDefault();
   });
+});
 
   function submitToy(toy, url) {
     let formData = { name: toy, image: url, likes: 0 };
@@ -20,19 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(function(response) { return response.json(); })
     .then(function(object) { appendToy(object); })
     .catch(function(error) { console.log(error.message); });
-  }
-
-  function appendToy(toy) {
-    const mainDiv = document.getElementById("toy-collection");
-    let card = document.createElement("div");
-    let toyName = document.createElement("h2"); toyName.innerHTML = toy.name; card.appendChild(toyName);
-    let toyIMG = document.createElement("img"); toyIMG.src = toy.image; toyIMG.className = "toy-avatar"; card.appendChild(toyIMG);
-    let toyLikes = document.createElement("p"); toyLikes.innerHTML = toy.likes+" Likes"; card.appendChild(toyLikes);
-    let toyButton = document.createElement("button"); toyButton.className = "like-btn"; toyButton.innerHTML = "Like <3"; 
-    toyButton.addEventListener("click", function(){ updateLikes(toy, toyLikes); });
-    card.appendChild(toyButton);
-    mainDiv.appendChild(card);
-    toyFormContainer.style.display = "none"; addToy = false;
   }
 
   addBtn.addEventListener("click", () => {
@@ -44,7 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
       toyFormContainer.style.display = "none";
     }
   });
-});
+
+
+
+
+
+
+
+
 
 function fetchTheToys() {
   fetch("http://localhost:3000/toys")
@@ -53,16 +47,16 @@ function fetchTheToys() {
 }
 
 function renderTheToys(toys) {
-  const mainDiv = document.getElementById("toy-collection");
   for (const toy of toys) { 
-    let card = document.createElement("div");
-    let toyName = document.createElement("h2"); toyName.innerHTML = toy.name; card.appendChild(toyName);
-    let toyIMG = document.createElement("img"); toyIMG.src = toy.image; toyIMG.className = "toy-avatar"; card.appendChild(toyIMG);
-    let toyLikes = document.createElement("p"); toyLikes.innerHTML = toy.likes+" Likes"; card.appendChild(toyLikes);
-    let toyButton = document.createElement("button"); toyButton.className = "like-btn"; toyButton.innerHTML = "Like <3"; 
-    toyButton.addEventListener("click", function(){ updateLikes(toy, toyLikes); });
-    card.appendChild(toyButton);
-    mainDiv.appendChild(card);
+    appendToy(toy)
+    // let card = document.createElement("div");
+    // let toyName = document.createElement("h2"); toyName.innerHTML = toy.name; card.appendChild(toyName);
+    // let toyIMG = document.createElement("img"); toyIMG.src = toy.image; toyIMG.className = "toy-avatar"; card.appendChild(toyIMG);
+    // let toyLikes = document.createElement("p"); toyLikes.innerHTML = toy.likes+" Likes"; card.appendChild(toyLikes);
+    // let toyButton = document.createElement("button"); toyButton.className = "like-btn"; toyButton.innerHTML = "Like <3"; 
+    // toyButton.addEventListener("click", function(){ updateLikes(toy, toyLikes); });
+    // card.appendChild(toyButton);
+    // mainDiv.appendChild(card);
   }
 
 }
@@ -75,4 +69,17 @@ function updateLikes(toy, toyLikes) {
   fetch(`http://localhost:3000/toys/${toy.id}`, configObj)
   .then(function(response) { return response.json(); }).then(function(object) { console.log(object); }).catch(function(error) { console.log(error.message); });
   toyLikes.innerHTML = liker+" Likes";
+}
+
+function appendToy(toy) {
+  let mainDiv = document.getElementById("toy-collection");
+  let card = document.createElement("div");
+  let toyName = document.createElement("h2"); toyName.innerHTML = toy.name; card.appendChild(toyName);
+  let toyIMG = document.createElement("img"); toyIMG.src = toy.image; toyIMG.className = "toy-avatar"; card.appendChild(toyIMG);
+  let toyLikes = document.createElement("p"); toyLikes.innerHTML = toy.likes+" Likes"; card.appendChild(toyLikes);
+  let toyButton = document.createElement("button"); toyButton.className = "like-btn"; toyButton.innerHTML = "Like <3"; 
+  toyButton.addEventListener("click", function(){ updateLikes(toy, toyLikes); });
+  card.appendChild(toyButton);
+  mainDiv.appendChild(card);
+  toyFormContainer.style.display = "none"; addToy = false;
 }

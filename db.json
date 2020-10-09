@@ -4,19 +4,19 @@
       "id": 1,
       "name": "Woody",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-      "likes": 25
+      "likes": 26
     },
     {
       "id": 2,
       "name": "Buzz Lightyear",
       "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-      "likes": 19
+      "likes": 20
     },
     {
       "id": 3,
       "name": "Mr. Potato Head",
       "image": "https://vignette.wikia.nocookie.net/universe-of-smash-bros-lawl/images/d/d8/Mr-potato-head-toy-story.gif/revision/latest?cb=20151129131217",
-      "likes": 4
+      "likes": 5
     },
     {
       "id": 4,
@@ -135,8 +135,14 @@
     {
       "name": "Link (Legend of Zelda)",
       "image": "https://images-na.ssl-images-amazon.com/images/I/616fFv4-9eL._AC_SY679_.jpg",
-      "likes": 4,
+      "likes": 7,
       "id": 24
+    },
+    {
+      "name": "Leonardo (Teenage Mutant Ninja Turtle)",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/71SZDMKmGHL._AC_SX425_.jpg",
+      "likes": 2,
+      "id": 25
     }
   ]
 }
