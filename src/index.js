@@ -47,18 +47,7 @@ function fetchTheToys() {
 }
 
 function renderTheToys(toys) {
-  for (const toy of toys) { 
-    appendToy(toy)
-    // let card = document.createElement("div");
-    // let toyName = document.createElement("h2"); toyName.innerHTML = toy.name; card.appendChild(toyName);
-    // let toyIMG = document.createElement("img"); toyIMG.src = toy.image; toyIMG.className = "toy-avatar"; card.appendChild(toyIMG);
-    // let toyLikes = document.createElement("p"); toyLikes.innerHTML = toy.likes+" Likes"; card.appendChild(toyLikes);
-    // let toyButton = document.createElement("button"); toyButton.className = "like-btn"; toyButton.innerHTML = "Like <3"; 
-    // toyButton.addEventListener("click", function(){ updateLikes(toy, toyLikes); });
-    // card.appendChild(toyButton);
-    // mainDiv.appendChild(card);
-  }
-
+  for (const toy of toys) { appendToy(toy); }
 }
 
 function updateLikes(toy, toyLikes) {
