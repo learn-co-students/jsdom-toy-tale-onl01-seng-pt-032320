@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let formData = { name: toy, image: url, likes: 0 };
     let configObj = { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(formData) };
     fetch("http://localhost:3000/toys", configObj)
-    .then(function(response) { return response.json(); })
+    .then(function(response) { return response.json() })
     .then(function(object) { appendToy(object); })
     .catch(function(error) { console.log(error.message); });
   }

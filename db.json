@@ -161,6 +161,42 @@
       "image": "https://ak1.ostkcdn.com/images/products/is/images/direct/9979e79bc124dfc25d38c43f941fd6c06a22cb97/JOON-Huge-Teddy-Bear-With-Ribbon%2C-Light-Gray.jpg",
       "likes": 2,
       "id": 28
+    },
+    {
+      "name": "Goofy",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/51ixtfAxpZL._AC_SX466_.jpg",
+      "likes": 0,
+      "id": 29
+    },
+    {
+      "name": "Ash Ketchum (Pokémon)",
+      "image": "https://cdn.shopify.com/s/files/1/2449/1147/products/buy-ash-ketchum-and-pikachu-partners-ready-for-battle-14-cm-pokemon-statues-best-anime-toys-action-figures-pvc-figure-statue-one-geek-figurine-toy_194.jpg?v=1564384288",
+      "likes": 0,
+      "id": 30
+    },
+    {
+      "name": "Shrek",
+      "image": "https://robertwatson1998.weebly.com/uploads/4/5/2/0/45201249/s469557602255168855_p5_i1_w500.jpeg",
+      "likes": 12,
+      "id": 31
+    },
+    {
+      "name": "Master Chief (Halo)",
+      "image": "https://i5.walmartimages.com/asr/9f1e6a9e-48b6-4fda-96f5-742fe9d3f710_1.ca93bc54f2b7ce9ce9ccb7566954fa8a.jpeg",
+      "likes": 0,
+      "id": 32
+    },
+    {
+      "name": "Jackie Chan",
+      "image": "https://lh3.googleusercontent.com/proxy/3FOrLHl4kFOLyMOsqTUHHT-Hkjo3LNSAa7odpc2HkcK04_DTJI7Aof9UXSTZgTz5FrbDIqdC38AWRkbc539QFlx2gQsQHbVwllkwAheoN1dmuhmhE2YErfIm",
+      "likes": 0,
+      "id": 33
+    },
+    {
+      "name": "Pokéball",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/41XqNWBqa0L._AC_.jpg",
+      "likes": 5,
+      "id": 34
     }
   ]
 }
