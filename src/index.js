@@ -32,14 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-
-
-
-
-
-
-
-
 function fetchTheToys() {
   fetch("http://localhost:3000/toys")
   .then(function(response) { return response.json(); }) 
@@ -61,6 +53,8 @@ function updateLikes(toy, toyLikes) {
 }
 
 function appendToy(toy) {
+  console.log(toy); 
+  document.querySelector('input[name="name"]').value=""; document.querySelector('input[name="image"]').value="";
   let mainDiv = document.getElementById("toy-collection");
   let card = document.createElement("div");
   let toyName = document.createElement("h2"); toyName.innerHTML = toy.name; card.appendChild(toyName);

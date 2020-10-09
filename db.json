@@ -143,6 +143,24 @@
       "image": "https://images-na.ssl-images-amazon.com/images/I/71SZDMKmGHL._AC_SX425_.jpg",
       "likes": 2,
       "id": 25
+    },
+    {
+      "name": "Trumpy Bear",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/715Ic7dnUpL._AC_SL1268_.jpg",
+      "likes": 0,
+      "id": 26
+    },
+    {
+      "name": "Zebra Toy",
+      "image": "https://gifts.worldwildlife.org/gift-center/images/species-adoptions/Zebra/Zebra-plush-z1.jpg",
+      "likes": 0,
+      "id": 27
+    },
+    {
+      "name": "Dumb Bear",
+      "image": "https://ak1.ostkcdn.com/images/products/is/images/direct/9979e79bc124dfc25d38c43f941fd6c06a22cb97/JOON-Huge-Teddy-Bear-With-Ribbon%2C-Light-Gray.jpg",
+      "likes": 2,
+      "id": 28
     }
   ]
 }
