@@ -4,19 +4,19 @@
       "id": 1,
       "name": "Woody",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-      "likes": 23
+      "likes": 25
     },
     {
       "id": 2,
       "name": "Buzz Lightyear",
       "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-      "likes": 17
+      "likes": 19
     },
     {
       "id": 3,
       "name": "Mr. Potato Head",
       "image": "https://vignette.wikia.nocookie.net/universe-of-smash-bros-lawl/images/d/d8/Mr-potato-head-toy-story.gif/revision/latest?cb=20151129131217",
-      "likes": 3
+      "likes": 4
     },
     {
       "id": 4,
@@ -89,6 +89,60 @@
       "image": "https://images-na.ssl-images-amazon.com/images/I/71w0UxvZsRL._AC_SL1500_.jpg",
       "likes": 5,
       "id": 15
+    },
+    {
+      "name": "Naruto",
+      "image": "https://i5.walmartimages.com/asr/05246cfa-c069-4ca0-930a-46c6395018fc.c7c853313c749250e3b48e7942e722cb.jpeg",
+      "likes": 0,
+      "id": 16
+    },
+    {
+      "name": "Garfield",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/71CDQmVU77L._AC_SL1500_.jpg",
+      "likes": 0,
+      "id": 17
+    },
+    {
+      "name": "Patamon",
+      "image": "https://target.scene7.com/is/image/Target/GUEST_1de99ba8-8ea5-4670-b9b8-02311cf4a22c?wid=488&hei=488&fmt=pjpeg",
+      "likes": 1,
+      "id": 18
+    },
+    {
+      "name": "Spyro",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/61CKjdl65tL._AC_SL1301_.jpg",
+      "likes": 1,
+      "id": 19
+    },
+    {
+      "name": "Spyro",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/61CKjdl65tL._AC_SL1301_.jpg",
+      "likes": 6,
+      "id": 20
+    },
+    {
+      "name": "Barney",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/41R1W70QTPL._AC_.jpg",
+      "likes": 5,
+      "id": 21
+    },
+    {
+      "name": "Mickey",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/61aZ1-5Bk1L._AC_SL1100_.jpg",
+      "likes": 4,
+      "id": 22
+    },
+    {
+      "name": "Totoro",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/41XTN7P1EWL._AC_.jpg",
+      "likes": 9,
+      "id": 23
+    },
+    {
+      "name": "Link (Legend of Zelda)",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/616fFv4-9eL._AC_SY679_.jpg",
+      "likes": 4,
+      "id": 24
     }
   ]
 }

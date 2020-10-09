@@ -18,9 +18,21 @@ document.addEventListener("DOMContentLoaded", () => {
     let configObj = { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(formData) };
     fetch("http://localhost:3000/toys", configObj)
     .then(function(response) { return response.json(); })
-    .then(function(object) { console.log(object); })
+    .then(function(object) { appendToy(object); })
     .catch(function(error) { console.log(error.message); });
-    setTimeout(function(){window.location.reload();},10);
+  }
+
+  function appendToy(toy) {
+    const mainDiv = document.getElementById("toy-collection");
+    let card = document.createElement("div");
+    let toyName = document.createElement("h2"); toyName.innerHTML = toy.name; card.appendChild(toyName);
+    let toyIMG = document.createElement("img"); toyIMG.src = toy.image; toyIMG.className = "toy-avatar"; card.appendChild(toyIMG);
+    let toyLikes = document.createElement("p"); toyLikes.innerHTML = toy.likes+" Likes"; card.appendChild(toyLikes);
+    let toyButton = document.createElement("button"); toyButton.className = "like-btn"; toyButton.innerHTML = "Like <3"; 
+    toyButton.addEventListener("click", function(){ updateLikes(toy, toyLikes); });
+    card.appendChild(toyButton);
+    mainDiv.appendChild(card);
+    toyFormContainer.style.display = "none"; addToy = false;
   }
 
   addBtn.addEventListener("click", () => {
@@ -53,14 +65,14 @@ function renderTheToys(toys) {
     mainDiv.appendChild(card);
   }
 
-  function updateLikes(toy, toyLikes) {
-    let liker = ++toy.likes;
-    let formData = { likes: liker };
-    let configObj = { method: "PATCH", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(formData) };
+}
 
-    fetch(`http://localhost:3000/toys/${toy.id}`, configObj)
-    .then(function(response) { return response.json(); }).then(function(object) { console.log(object); }).catch(function(error) { console.log(error.message); });
-    toyLikes.innerHTML = liker+" Likes";
-  }
+function updateLikes(toy, toyLikes) {
+  let liker = ++toy.likes;
+  let formData = { likes: liker };
+  let configObj = { method: "PATCH", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(formData) };
 
+  fetch(`http://localhost:3000/toys/${toy.id}`, configObj)
+  .then(function(response) { return response.json(); }).then(function(object) { console.log(object); }).catch(function(error) { console.log(error.message); });
+  toyLikes.innerHTML = liker+" Likes";
 }
