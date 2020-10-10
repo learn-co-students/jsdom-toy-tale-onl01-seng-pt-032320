@@ -1,6 +1,5 @@
 let addToy = false;
-
-document.addEventListener("DOMContentLoaded", () => {
+function getToys(){
   const toys = document.getElementById("toy-collection")
   fetch("http://localhost:3000/toys")
   .then(function(response) {
@@ -27,31 +26,46 @@ document.addEventListener("DOMContentLoaded", () => {
       toys.appendChild(divTag)
     }
   })
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+ 
+  getToys()
 
   const addBtn = document.querySelector("#new-toy-btn");
   const toyFormContainer = document.querySelector(".container");
   const toyForm = document.querySelector(".add-toy-form")
   addBtn.addEventListener("click", () => {
-    fetch("http://localhost:3000/toys",{
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        "name": toyForm.target.querySelector("name"),
-        "image": toyForm.target.querySelector("image"),
-        "likes": 0
-      });
+    toyFormContainer.style.display = "block"
   });
-});
 
+toyForm.addEventListener("submit", (e) => {
+  e.preventDefault()
+  console.log(e.target.name.value);
+  console.log(e.target.image.value)
+  fetch("http://localhost:3000/toys",{
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      "name": e.target.name.value,
+      "image": e.target.image.value,
+      "likes": 0
+    })
+  })
+  .then(response => response.json())
+  .then(newToy => console.log(newToy));
+  getToys()
+  console.log("hello");
+});
 
 
   const likeButton = document.getElementById("like-btn")
   likeButton.addEventListener('click', () => {
     fetch(`http://localhost:3000/toys/${likeButton.id}`, {
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
