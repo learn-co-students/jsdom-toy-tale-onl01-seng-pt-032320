@@ -39,42 +39,28 @@ document.addEventListener("DOMContentLoaded", () => {
         "Accept": "application/json"
       },
       body: JSON.stringify({
-        "name": toyForm.target.document.querySelector("name"),
-        "image": toyForm.target.document.querySelector("image"),
+        "name": toyForm.target.querySelector("name"),
+        "image": toyForm.target.querySelector("image"),
         "likes": 0
-      })
+      });
   });
-})
+});
 
-    // addToy = !addToy;
-    // if (addToy) {
-    //   toyFormContainer.style.display = "block";
-    // } else {
-    //   toyFormContainer.style.display = "none";
-    // }
-  });
+
 
   const likeButton = document.getElementById("like-btn")
   likeButton.addEventListener('click', () => {
-    let configObj = {
-      method: "PATCH",
+    fetch(`http://localhost:3000/toys/${likeButton.id}`, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
       body: JSON.stringify({
-        "likes": ?
+        "likes": 7
       })
-    };
-   fetch(`http://localhost:3000/toys/${likeButton.id}`,configObj);
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(object) {
-      object.likes 
-    })
+  });
 
-})
-
+});
 
 });
