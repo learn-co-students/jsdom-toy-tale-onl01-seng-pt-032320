@@ -30,20 +30,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const addBtn = document.querySelector("#new-toy-btn");
   const toyFormContainer = document.querySelector(".container");
+  const toyForm = document.querySelector(".add-toy-form")
   addBtn.addEventListener("click", () => {
-    let configObj = {
+    fetch("http://localhost:3000/toys",{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
       body: JSON.stringify({
-        "name": "Jessie",
-        "image": "https://vignette.wikia.nocookie.net/p__/images/8/88/Jessie_Toy_Story_3.png/revision/latest?cb=20161023024601&path-prefix=protagonist",
+        "name": toyForm.target.document.querySelector("name"),
+        "image": toyForm.target.document.querySelector("image"),
         "likes": 0
       })
-    };
-   fetch("http://localhost:3000/toys",configObj);
+  });
+})
 
     // addToy = !addToy;
     // if (addToy) {
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Accept": "application/json"
       },
       body: JSON.stringify({
-        "likes": 7
+        "likes": ?
       })
     };
    fetch(`http://localhost:3000/toys/${likeButton.id}`,configObj);
@@ -70,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return response.json();
     })
     .then(function(object) {
-      object.likes+=1 
+      object.likes 
     })
 
 })
