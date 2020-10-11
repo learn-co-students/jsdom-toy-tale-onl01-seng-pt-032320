@@ -2,9 +2,7 @@ let addToy = false;
 function getToys(){
   const toys = document.getElementById("toy-collection")
   fetch("http://localhost:3000/toys")
-  .then(function(response) {
-    return response.json();
-  })
+  .then(response => response.json())
   .then(function(object) {
     for(lists of object){
       const divTag = document.createElement("div")
@@ -15,11 +13,27 @@ function getToys(){
       const imgTag = document.createElement("img")
       imgTag.src = lists.image
       const pTag = document.createElement("p")
-      pTag.innerText = `${lists.likes} Likes `
+      pTag.innerText = `${lists.likes} Likes`
+      console.log(pTag.innerText);
       const buttonTag = document.createElement("button")
       buttonTag.class = 'like-btn'
       buttonTag.innerText = 'Like <3'
       buttonTag.id = lists.id 
+      buttonTag.addEventListener('click', (event) => {
+        console.log("button click", lists.id)
+        pTag.innerText = `${lists.likes + 1} Likes`
+        
+        fetch(`http://localhost:3000/toys/${divTag.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            "likes": pTag
+          })
+      });
+    })
       divTag.appendChild(h2Tag)
       divTag.appendChild(imgTag)
       divTag.appendChild(pTag)
@@ -28,7 +42,6 @@ function getToys(){
     }
   })
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   getToys()
   const addBtn = document.querySelector("#new-toy-btn");
@@ -59,25 +72,24 @@ toyForm.addEventListener("submit", (e) => {
   getToys()
 });
 
+})
+  // const likeButton = document.querySelector(".like-btn")
+  // console.log(likeButton);
+  // // const allPokemons = document.querySelector(`div#${}`)
 
-  const likeButton = document.querySelector(".like-btn")
-  console.log(likeButton);
-  // const allPokemons = document.querySelector(`div#${}`)
+  // likeButton.addEventListener('click', (e) => {
+  //   console.log(e);
+  //   fetch(`http://localhost:3000/toys/${likeButton.id}`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Accept": "application/json"
+  //     },
+  //     body: JSON.stringify({
+  //       "likes": 7
+  //     })
+  // });
+  // getToys()
 
-  likeButton.addEventListener('click', (e) => {
-    console.log(e.target);
-    fetch(`http://localhost:3000/toys/${likeButton.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        "likes": 7
-      })
-  });
-  getToys()
+// });
 
-});
-
-});
