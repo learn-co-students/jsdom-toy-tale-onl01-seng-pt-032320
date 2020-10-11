@@ -9,6 +9,7 @@ function getToys(){
     for(lists of object){
       const divTag = document.createElement("div")
       divTag.class = 'card'
+      divTag.id = lists.id 
       const h2Tag = document.createElement("h2")
       h2Tag.innerText = lists.name 
       const imgTag = document.createElement("img")
@@ -29,9 +30,7 @@ function getToys(){
 }
 
 document.addEventListener("DOMContentLoaded", () => {
- 
   getToys()
-
   const addBtn = document.querySelector("#new-toy-btn");
   const toyFormContainer = document.querySelector(".container");
   const toyForm = document.querySelector(".add-toy-form")
@@ -58,12 +57,15 @@ toyForm.addEventListener("submit", (e) => {
   .then(response => response.json())
   .then(newToy => console.log(newToy));
   getToys()
-  console.log("hello");
 });
 
 
-  const likeButton = document.getElementById("like-btn")
-  likeButton.addEventListener('click', () => {
+  const likeButton = document.querySelector(".like-btn")
+  console.log(likeButton);
+  // const allPokemons = document.querySelector(`div#${}`)
+
+  likeButton.addEventListener('click', (e) => {
+    console.log(e.target);
     fetch(`http://localhost:3000/toys/${likeButton.id}`, {
       method: "PATCH",
       headers: {
@@ -74,6 +76,7 @@ toyForm.addEventListener("submit", (e) => {
         "likes": 7
       })
   });
+  getToys()
 
 });
 
