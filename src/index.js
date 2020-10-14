@@ -1,10 +1,12 @@
 let addToy = false;
 function getToys(){
   const toys = document.getElementById("toy-collection")
+  toys.innerHTML = ""
   fetch("http://localhost:3000/toys")
   .then(response => response.json())
   .then(function(object) {
     for(lists of object){
+      console.log(lists);
       const divTag = document.createElement("div")
       divTag.class = 'card'
       divTag.id = lists.id 
@@ -20,19 +22,19 @@ function getToys(){
       buttonTag.innerText = 'Like <3'
       buttonTag.id = lists.id 
       buttonTag.addEventListener('click', (event) => {
-        console.log("button click", lists.id)
-        pTag.innerText = `${lists.likes + 1} Likes`
-        
-        fetch(`http://localhost:3000/toys/${divTag.id}`, {
+        let toyLikes = parseInt(pTag.innerText.split(" ")[0])
+         const toyId = event.target.id
+        fetch(`http://localhost:3000/toys/${toyId}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
             "Accept": "application/json"
           },
           body: JSON.stringify({
-            "likes": pTag
+            "likes": toyLikes+1
           })
       });
+      getToys()
     })
       divTag.appendChild(h2Tag)
       divTag.appendChild(imgTag)
@@ -53,43 +55,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 toyForm.addEventListener("submit", (e) => {
   e.preventDefault()
-  console.log(e.target.name.value);
-  console.log(e.target.image.value)
-  fetch("http://localhost:3000/toys",{
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify({
-      "name": e.target.name.value,
-      "image": e.target.image.value,
-      "likes": 0
-    })
+  const containerDiv = document.getElementById("toy-collection");
+  const innerDivs = containerDiv.getElementsByTagName("DIV");
+  for(let i=0; i<innerDivs.length; i++)
+  {
+     const valueName = innerDivs[i].querySelector("h2").innerText
+     const valueImage = innerDivs[i].querySelector("IMG").src
+     if (e.target.name.value === valueName || e.target.image.value === valueImage) {
+        addToy = true
+     }
+  }
+
+ if (addToy === true) {
+   console.log("The toy was already added");
+  }
+     else {
+      fetch("http://localhost:3000/toys",{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          "name": e.target.name.value,
+          "image": e.target.image.value,
+          "likes": 0
+        })
+      })
+    }
   })
-  .then(response => response.json())
-  .then(newToy => console.log(newToy));
   getToys()
-});
-
+  
 })
-  // const likeButton = document.querySelector(".like-btn")
-  // console.log(likeButton);
-  // // const allPokemons = document.querySelector(`div#${}`)
-
-  // likeButton.addEventListener('click', (e) => {
-  //   console.log(e);
-  //   fetch(`http://localhost:3000/toys/${likeButton.id}`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Accept": "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //       "likes": 7
-  //     })
-  // });
-  // getToys()
-
-// });
+ 
 
