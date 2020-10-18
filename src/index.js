@@ -1,6 +1,7 @@
 let addToy = false;
 
 document.addEventListener("DOMContentLoaded", () => {
+  fetchToys();
   const addBtn = document.querySelector("#new-toy-btn");
   const toyFormContainer = document.querySelector(".container");
   const toyCollection = document.getElementById('toy-collection')
@@ -10,13 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
     addToy = !addToy;
     if (addToy) {
       toyFormContainer.style.display = "block";
-      toyFormContainer.addEventListener("submit", postToy())
+      toyFormContainer.addEventListener("submit", event => {
+        postToy(event.target)
+      })
     } else {
       toyFormContainer.style.display = "none";
     }
   });
   
-
+  function fetchToys(){
   return fetch('http://localhost:3000/toys')
   .then(function(response) {
     return response.json()
@@ -24,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   .then(function(object){ 
     object.forEach(toy => renderToys(toy))
 })
-
+}
 
 function renderToys(toy) {
   let divCard = document.createElement('div')
@@ -43,13 +46,15 @@ function renderToys(toy) {
   let btn = document.createElement('button')
   btn.setAttribute('class', 'like-btn')
   btn.innerText = "Like <3"
-
+  btn.addEventListener('click', event => {
+    likeToy(event)
+  })
   divCard.append(h2, img, p, btn)
   toyCollection.append(divCard)
 }
 
 function postToy(toy_data) {
-  return fetch('http://localhost:3000/toys', {
+  fetch('http://localhost:3000/toys', {
       method: 'POST',
       headers: {
         "Content-Type": 'application/json',
@@ -62,16 +67,36 @@ function postToy(toy_data) {
       })
     })
 
-    .then(function(response) {
+  .then(function(response) {
       return response.json()
-  })
+  }) 
+
   .then(function(object){
     let newToy = renderToy(object)
-    console.log(newToy)
-      //toyCollection.append(newToy)
+    toyCollection.append(newToy)
   })
-
 };
 
+function likeToy(event) {
+  event.preventDefault()
+  let plusLike = parseInt(event.target.previousElementSibling.innerText) + 1
 
+  fetch(`http://localhost:3000/toys/${event.target.id}`, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+
+      },
+      body: JSON.stringify({
+        "likes": plusLike
+      })
+    })
+    .then(function(response) {
+      return response.json()
+  }) 
+    .then(function(object){
+      event.target.previousElementSibling.innerText = `${plusLike} likes`;
+    })
+}
 })
