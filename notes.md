@@ -29,15 +29,17 @@ document.addEventListener("DOMContentLoaded", () => {
   //   // let imageElement = document.getElementById("img-url-field")
   // }
 
-function addNewToy() {
+function addNewToy() 
     fetch("http://localhost:3000/toys"), {
       method: "POST"
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
         },
-      body: JSON.stringify()
- 
+      body: JSON.stringify(
+      
+//       })
+// })
 
 //previousSibling = just gets the node/element before it
 //Challenge 1 = fetch andy's toys
