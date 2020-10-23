@@ -30,14 +30,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // }
 
 function addNewToy() {
-    fetch("http://localhost:3000/toys"), {
-      method: "POST"
+    fetch("http://localhost:3000/toys", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
         },
-      body: JSON.stringify()
- 
+      body: JSON.stringify({ 
+        name: "Woody",
+        image: "url",
+        likes: 0 //starting point
+      })
+      //what does stringify do? takes obj -> json
+    })
+  }
 
 //previousSibling = just gets the node/element before it
 //Challenge 1 = fetch andy's toys
