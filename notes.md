@@ -20,26 +20,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-  // function addNewToy(event) {
-  //   event.preventDefault()
-  //   // console.log("test")
+  function addNewToy(event) {
+    event.preventDefault()
+    console.log("test")
 
-  //   // let nameElement = document.getElementById("name-field")
-  //   // // console.log(nameElement)
-  //   // let imageElement = document.getElementById("img-url-field")
-  // }
+    // let nameElement = document.getElementById("name-field")
+    // // console.log(nameElement)
+    // let imageElement = document.getElementById("img-url-field")
+  }
 
-function addNewToy() 
-    fetch("http://localhost:3000/toys"), {
-      method: "POST"
+function addNewToy() {
+  console.log('a')
+    fetch("http://localhost:3000/toys", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
         },
-      body: JSON.stringify(
-      
-//       })
-// })
+      body: JSON.stringify({ 
+        "name": data.name.value,
+        "image": data.image.value,
+        "likes": 0 //starting point
+      })
+      .then(response => response.json())
+      .then(json => console.log(json))
+      //what does stringify do? takes obj -> json
+    })
+  }
 
 //previousSibling = just gets the node/element before it
 //Challenge 1 = fetch andy's toys
